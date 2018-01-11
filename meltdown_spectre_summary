@@ -26,8 +26,8 @@ Variant 3: rogue data cache load (Meltdown, CVE-2017-5754)
 
 Spectre
 =======
-There is no easy fix available for these flaws since redesign of processors are required. A fix may not be available until a new generation of chips hit the market.
 There is work to harden software against future exploitation of Spectre, respectively to patch software after exploitation through Spectre (LLVM patch, ARM speculation barrier header).
+E.g. Intel has issued Updates to protect systems from Security Exploits: https://newsroom.intel.com/news-releases/intel-issues-updates-protect-systems-security-exploits/
 
 Meltdown
 ========
@@ -95,10 +95,12 @@ Intel
 All Intel processor which implements out-of-order execution is potentially affected, which is effectively every processor since 1995 (except Intel Itanium and Intel Atom before 2013).
 Further info provided by Intel:
 - Speculative Execution and Indirect Branch Prediction Side Channel Analysis Method: https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00088&languageid=en-fr 
-
 - Intel Analysis of Speculative Execution Side Channels (Whitepaper): https://newsroom.intel.com/wp-content/uploads/sites/11/2018/01/Intel-Analysis-of-Speculative-Execution-Side-Channels.pdf
-
 - Intel Issues Updates to Protect Systems from Security Exploits: https://newsroom.intel.com/news-releases/intel-issues-updates-protect-systems-security-exploits/
+
+Security Exploits and Intel Products (Press Kit): https://newsroom.intel.com/press-kits/security-exploits-intel-products/ 
+Facts about The New Security Research Findings and Intel® Products:
+https://www.intel.com/content/www/us/en/architecture-and-technology/facts-about-side-channel-analysis-and-intel-products.html
 
 AMD
 The AMD research team identified three variants within the speculative execution research. The below grid details the specific variants detailed in the research and the AMD response details.
@@ -129,8 +131,11 @@ https://access.redhat.com/security/vulnerabilities/speculativeexecution
 
 Downside of the fix
 ====================
-The downside to this separation is that it is relatively expensive, time wise, to keep switching between two separate address spaces for every system call and for every interrupt from the hardware.
+The downside to this separation is that it is estimated relatively expensive, time wise, to keep switching between two separate address spaces for every system call and for every interrupt from the hardware.
 These context switches do not happen instantly, and they force the processor to dump cached data and reload information from memory. This increases the kernel's overhead, and slows down the computer 5% -30 % depending on the amount of system calls performed and interrupts serviced.
+
+Industry Testing Shows Recently Released Security Updates Not Impacting Performance in Real-World Deployments: 
+https://newsroom.intel.com/news-releases/industry-testing-shows-recently-released-security-updates-not-impacting-performance-real-world-deployments/
 
 Affected Enea Releases
 ======================
