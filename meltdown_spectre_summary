@@ -172,6 +172,7 @@ A: If your system is affected, the exploit can read the memory content of your c
 4. References
 
     https://github.com/hannob/meltdownspectre-patches
+    https://www.schneier.com/blog/archives/2018/01/spectre_and_mel.html
     https://en.wikipedia.org/wiki/Side-channel_attack
     http://www.techdesignforums.com/practice/guides/side-channel-analysis-attacks
     https://googleprojectzero.blogspot.ca/2018/01/reading-privileged-memory-with-side.html
