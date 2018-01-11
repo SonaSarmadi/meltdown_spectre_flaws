@@ -18,7 +18,6 @@ Estimated 5-30% performance loss depending on the amount of system calls perform
 2. Description
 
 An industry-wide issue has been disclosed by Google Project Zero project in the way many modern microprocessor designs have implemented speculative execution of instructions (a commonly used performance optimization). The CPU data cache timing can be abused to efficiently leak information out of mis-speculated execution, leading to arbitrary virtual memory read vulnerabilities across local security boundaries in various contexts.
-
 The Project Zero research team at Google identified three variants of the exploits within the speculative execution research:
 
 Variant 1: bounds check bypass (Spectre, CVE-2017-5753)
@@ -28,13 +27,11 @@ Variant 3: rogue data cache load (Meltdown, CVE-2017-5754)
 Spectre
 =======
 There is no easy fix available for these flaws since redesign of processors are required. A fix may not be available until a new generation of chips hit the market.
-
 There is work to harden software against future exploitation of Spectre, respectively to patch software after exploitation through Spectre (LLVM patch, ARM speculation barrier header).
 
 Meltdown
 ========
 Software patches (Kernel address space isolation, “KAISER”) are available estimated 5-30% performance loss depending on the amount of system calls Performed (and interrupts serviced). M Intel CPUs are affected by this vulnerability.
-
 There are patches against Meltdown for Linux, KPTI (formerly KAISER https://lwn.net/Articles/738975/).
 
 Mitigation
@@ -173,7 +170,7 @@ Q: What can be leaked?
 A: If your system is affected, the exploit can read the memory content of your computer. This may include passwords and sensitive data stored on the system.
 
 4. References
-=============
+
     https://github.com/hannob/meltdownspectre-patches
     https://en.wikipedia.org/wiki/Side-channel_attack
     http://www.techdesignforums.com/practice/guides/side-channel-analysis-attacks
@@ -188,7 +185,7 @@ A: If your system is affected, the exploit can read the memory content of your c
 Some side-channel attacks require technical knowledge of the internal operation of the system on which the cryptography is implemented, although others such as differential power analysis are effective as black-box attacks. Many powerful side-channel attacks are based on statistical methods pioneered by Paul Kocher (an American cryptographer).
 
 5. Acknowledgements
-====================
+
     Thanks to Google Project Zero for reporting these flaws.
 
 
