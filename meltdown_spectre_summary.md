@@ -1,18 +1,18 @@
-        Reading privileged memory with a side-channel [1]
+Reading privileged memory with a side-channel [1]
+=================================================
 
-
-Summary
-=======
-**CVE names:** CVE-2017-5715, CVE-2017-5753, CVE-2017-5754
-**Affected software:** Many operating Systems including the Linux kernel (Enea OSE is not affected)
-**Versions affected:** All
-**Severity:** High
-**Affected hardware:** All modern CPUs based on speculative execution, including certain processors by Intel, AMD, NXP and ARM.
-**Mitigation/workaround:** 
+**Summary**
+**CVE names:** CVE-2017-5715, CVE-2017-5753, CVE-2017-5754<br />
+**Affected software:** Many operating Systems including the Linux kernel (Enea OSE is not affected)<br />
+**Versions affected:** All<br />
+**Severity:** High<br />
+**Affected hardware:** All modern CPUs based on speculative execution, including certain processors by Intel, AMD, NXP and ARM<br />
+**Mitigation/workaround:** <br />
    - Separating the kernel and user space page table
    - Disabling indirect branch prediction upon entry into the kernel or into the hypervisor
    - Fencing speculative loads of certain memory locations
-**Downside of the mitigation:**
+
+**Downside of the mitigation:**<br />
 Estimated 5-30% performance loss depending on the amount of system calls performed (and interrupts serviced).
 
 Description
@@ -58,8 +58,8 @@ Explanation of PCID, which will reduce performance impact of KPTI on newer kerne
 
 QEMU patches
 ============
-Unofficial patch published [here](https://lists.nongnu.org/archive/html/qemu-devel/2018-01/msg00811.html).
-official [blog post](https://www.qemu.org/2018/01/04/spectre).
+Unofficial patch is published [here](https://lists.nongnu.org/archive/html/qemu-devel/2018-01/msg00811.html). <br />
+official blog post see [here](https://www.qemu.org/2018/01/04/spectre).
 
 KVM update
 ========== 
