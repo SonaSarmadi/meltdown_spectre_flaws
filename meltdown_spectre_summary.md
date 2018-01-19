@@ -20,9 +20,9 @@ Description
 An industry-wide issue has been disclosed by Google Project Zero project in the way many modern microprocessor designs have implemented speculative execution of instructions (a commonly used performance optimization). The CPU data cache timing can be abused to efficiently leak information out of mis-speculated execution, leading to arbitrary virtual memory read vulnerabilities across local security boundaries in various contexts.
 The Project Zero research team at Google identified three variants of the exploits within the speculative execution research:
 
-Variant 1: bounds check bypass (Spectre, CVE-2017-5753)
-Variant 2: branch target injection (Spectre, CVE-2017-5715)
-Variant 3: rogue data cache load (Meltdown, CVE-2017-5754)
+   - Variant 1: bounds check bypass (Spectre, CVE-2017-5753)
+   - Variant 2: branch target injection (Spectre, CVE-2017-5715)
+   - Variant 3: rogue data cache load (Meltdown, CVE-2017-5754)
 
 [Spectre](https://spectreattack.com/spectre.pdf)
 =======
@@ -31,7 +31,7 @@ E.g. Intel has issued [Updates](https://newsroom.intel.com/news-releases/intel-i
 
 [Meltdown](https://meltdownattack.com/meltdown.pdf)
 ========
-Software patches (Kernel address space isolation, “KAISER”) are available estimated 5-30% performance loss depending on the amount of system calls Performed (and interrupts serviced). M Intel CPUs are affected by this vulnerability.
+Software patches (Kernel address space isolation, “KAISER”) are available estimated 5-30% performance loss depending on the amount of system calls Performed (and interrupts serviced). Most Intel CPUs are affected by this vulnerability.
 There are patches against Meltdown for Linux, KPTI (formerly [KAISER](https://lwn.net/Articles/738975/)).
 
 Mitigation
@@ -50,9 +50,9 @@ Linux upstream kernel
 =====================
 Kernel Page Table Isolation is a mitigation in the Linux Kernel, originally named KAISER.
 
-  •	Version 4.14.11 contains KPTI.
-  •	Version 4.15-rc6 contains KPTI.
-  •	Longterm support kernels Version 4.9.75 contain KPTI backports.
+   - Version 4.14.11 contains KPTI.
+   - Version 4.15-rc6 contains KPTI.
+   - Longterm support kernels Version 4.9.75 contain KPTI backports.
 
 Explanation of PCID, which will reduce performance impact of KPTI on newer kernels.
 
@@ -70,25 +70,25 @@ He is also mentioning that a full solution will require all the Linux parts to b
 
 Vendor statement
 ================
-**Arm**
+**Arm**<br />
 According to Arm the majority of Arm processors are not impacted by any variation of the side-channel speculation mechanism.
 A definitive list of the small subset of Arm-designed processors which are susceptible can be found [here](https://developer.arm.com/support/security-update)
 
-Variant 1 (action required):
-    •	Search your code for the code snippets as described in the Cache speculation [Side-channels whitepaper](https://developer.arm.com/support/security-update/download-the-whitepaper).
-    •	Once identified use the compiler support for mitigations as described in compiler support for mitigations to modify your code, and recompile using an updated compiler.
+**Variant 1 (action required):**<br />
+    •	Search your code for the code snippets as described in the Cache speculation [Side-channels whitepaper](https://developer.arm.com/support/security-update/download-the-whitepaper).<br />
+    •	Once identified use the compiler support for mitigations as described in compiler support for mitigations to modify your code, and recompile using an updated compiler.<br />
 
-Variant 2
+**Variant 2**
     The mitigation will vary by processor micro-architecture, for Cortex-A57 and Cortex-A72: 
     Apply all kernel patches provided by Arm and available [here](https://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux.git/log/?h=kpti)
 
-Variant 3 (for Cortex-A15, Cortex-A57, and Cortex-A72):
+**Variant 3 (for Cortex-A15, Cortex-A57, and Cortex-A72):**
      In general, it is not believed that software mitigations for this issue are necessary.
      Please refer to the Cache Speculation whitepaper [Side-channels whitepaper](https://developer.arm.com/support/security-update/download-the-whitepaper) for more info.
 
  Trusted Firmware patches are also available from Arm.
 
-**Intel**
+**Intel**<br />
 All Intel processor which implements out-of-order execution is potentially affected, which is effectively every processor since 1995 (except Intel Itanium and Intel Atom before 2013).
 Further info provided by Intel:
 - Speculative Execution and Indirect Branch Prediction [Side Channel Analysis Method](https://security-center.intel.com/advisory.aspx?intelid=INTEL-SA-00088&languageid=en-fr)
@@ -98,7 +98,7 @@ Further info provided by Intel:
 Security Exploits and Intel Products [Press Kit](https://newsroom.intel.com/press-kits/security-exploits-intel-products)
 Facts about The New [Security Research Findings and Intel® Products](https://www.intel.com/content/www/us/en/architecture-and-technology/facts-about-side-channel-analysis-and-intel-products.html). 
 
-**AMD**
+**AMD**<br />
 The AMD research team identified three variants within the speculative execution research. The below grid details the specific variants detailed in the research and the AMD response details.
                
 Variant One (Bounds Check Bypass)
@@ -110,7 +110,7 @@ Variant Two (Branch Target Injection )
 Variant Three (Rogue Data Cache Load)           
    - Zero AMD vulnerability due to AMD architecture differences. http://www.amd.com/en/corporate/speculative-execution
 
-**NXP** 
+**NXP**<br />
 We are waiting for official statement by NXP. Please refer to NXP community discussion: 
 https://community.nxp.com
 
@@ -152,22 +152,26 @@ A: The name is based on the root cause, speculative execution. As it is not easy
 Q: Am I affected by the vulnerability?
 A: Most certainly, yes.
 
-Q: Which systems are affected by Meltdown?
+Q: Which systems are affected by Meltdown?<br />
 A: Desktop, Laptop, and Cloud computers may be affected by Meltdown. More technically, every Intel processor which implements out-of-order execution is potentially affected, which is effectively every processor since 1995 (except Intel Itanium and Intel Atom before 2013). 
 
 Q: Meltdown have only been verified on Intel processors. It is unclear whether AMD processors are also affected by Meltdown.  
 A: According to Arm, some of their processors are also affected.
 
-Q: Which systems are affected by Spectre?
-A: Almost every system is affected by Spectre: Desktops, Laptops, Cloud Servers, as well as Smartphones.
+Which systems are affected by Meltdown?<br />
+"We successfully tested Meltdown on Intel processor generations released as early as 2011. Currently, we have only verified Meltdown on Intel processors. At the moment, it is unclear whether AMD processors are also affected by Meltdown.  According to ARM, some of their processors are also affected." Ref: [meltdownattack](https://meltdownattack.com/#faq-fix)
 
-Q: Is there any known exploit for Meltdown or Spectre?
+Q: Which systems are affected by Spectre?<br />
+A: Almost every system is affected by Spectre: Desktops, Laptops, Cloud Servers, as well as Smartphones.
+"We have verified Spectre on Intel, AMD, and ARM processors. Ref: [meltdownattack.com](https://meltdownattack.com/#faq-fix)
+
+Q: Is there any known exploit for Meltdown or Spectre?<br />
 A: We are not aware of any public exploit. 
 
-Q: Can antivirus detect or block this attack?
+Q: Can antivirus detect or block this attack?<br />
 A: While possible in theory, this is unlikely in practice. Unlike usual malware, Meltdown and Spectre are hard to distinguish from regular benign applications. However, antivirus may detect malware which uses the attacks by comparing binaries after they become known.
 
-Q: What can be leaked?
+Q: What can be leaked?<br />
 A: If your system is affected, the exploit can read the memory content of your computer. This may include passwords and sensitive data stored on the system.
 
 References
