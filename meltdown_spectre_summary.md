@@ -3,7 +3,6 @@ Reading privileged memory with a side-channel [1]
 
 **Summary**
 **CVE names:** CVE-2017-5715, CVE-2017-5753, CVE-2017-5754<br />
-**Affected software:** Many operating Systems including the Linux kernel (Enea OSE is not affected)<br />
 **Versions affected:** All<br />
 **Severity:** High<br />
 **Affected hardware:** All modern CPUs based on speculative execution, including certain processors by Intel, AMD, NXP and ARM<br />
@@ -133,10 +132,7 @@ These context switches do not happen instantly, and they force the processor to 
 Industry Testing Shows Recently Released Security Updates Not Impacting Performance in Real-World Deployments:
 https://newsroom.intel.com/news-releases/industry-testing-shows-recently-released-security-updates-not-impacting-performance-real-world-deployments/
 
-Affected Enea Releases
-======================
-Enea releases are affected but the problem is only known to exist on certain processors from Intel, AMD, NXP and Arm which implement speculative execution. See “vendor statement” and “Questions & Answers” sections for more info. 
-Please refer to your hardware vendor or Enea support team for detailed info.
+
 
 Questions & Answers
 ===================
